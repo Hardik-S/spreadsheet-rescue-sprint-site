@@ -269,6 +269,18 @@ export function renderDocument(content) {
   const ogImageUrl = meta.ogImage.startsWith('http')
     ? meta.ogImage
     : new URL(meta.ogImage, canonicalUrl).toString();
+  const ogImageAltMeta = meta.ogImageAlt
+    ? `    <meta property="og:image:alt" content="${attr(meta.ogImageAlt)}" />\n`
+    : '';
+  const ogImageWidthMeta = meta.ogImageWidth
+    ? `    <meta property="og:image:width" content="${attr(meta.ogImageWidth)}" />\n`
+    : '';
+  const ogImageHeightMeta = meta.ogImageHeight
+    ? `    <meta property="og:image:height" content="${attr(meta.ogImageHeight)}" />\n`
+    : '';
+  const twitterImageAltMeta = meta.ogImageAlt
+    ? `    <meta name="twitter:image:alt" content="${attr(meta.ogImageAlt)}" />\n`
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -282,11 +294,13 @@ export function renderDocument(content) {
     <meta property="og:description" content="${attr(meta.description)}" />
     <meta property="og:url" content="${attr(canonicalUrl)}" />
     <meta property="og:image" content="${attr(ogImageUrl)}" />
+${ogImageAltMeta}${ogImageWidthMeta}${ogImageHeightMeta}    <meta property="og:site_name" content="${attr(meta.title)}" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${attr(meta.title)}" />
     <meta name="twitter:description" content="${attr(meta.description)}" />
     <meta name="twitter:image" content="${attr(ogImageUrl)}" />
+${twitterImageAltMeta}    <meta name="twitter:url" content="${attr(canonicalUrl)}" />
     <title>${text(meta.title)}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
