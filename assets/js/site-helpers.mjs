@@ -22,8 +22,11 @@ export function resolveSecondaryAction(cta, contact, primaryHref = null) {
   }
 
   if (cta.secondaryEmail && primaryHref) {
+    const [, query = ''] = primaryHref.split('?');
+    const secondaryHref = `mailto:${cta.secondaryEmail}${query ? `?${query}` : ''}`;
+
     return {
-      href: primaryHref,
+      href: secondaryHref,
       label: cta.secondaryLabel,
       isExternal: false
     };
