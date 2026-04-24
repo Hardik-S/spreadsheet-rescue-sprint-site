@@ -75,21 +75,44 @@ export function renderSite(content) {
           </div>
 
           <figure class="hero-visual reveal">
-            <div class="visual-shell">
+            <div class="visual-shell rescue-visual">
               <div class="visual-topline">
-                <span>Spreadsheet rescue view</span>
-                <span>Illustrative mock data</span>
+                <span>72-hour rescue map</span>
+                <span>One workflow</span>
               </div>
-              <img
-                src="${attr(images.hero)}"
-                alt="Stylized spreadsheet workflow cleanup view with highlighted status columns and automation cues."
-                width="1600"
-                height="1680"
-                fetchpriority="high"
-              />
+              <div class="rescue-flow" aria-label="Spreadsheet rescue workflow from brittle sheet to clean handoff">
+                <div class="rescue-card rescue-card-before">
+                  <p class="rescue-label">Before</p>
+                  <h3>Brittle sheet</h3>
+                  <ul>
+                    <li>Manual follow-up</li>
+                    <li>Hidden formula risk</li>
+                    <li>No clear owner</li>
+                  </ul>
+                </div>
+                <div class="rescue-arrow" aria-hidden="true">&rarr;</div>
+                <div class="rescue-card rescue-card-after">
+                  <p class="rescue-label">Sprint fix</p>
+                  <h3>Cleaner workflow</h3>
+                  <ul>
+                    <li>Validated structure</li>
+                    <li>Light automation</li>
+                    <li>Handoff notes</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="rescue-output">
+                <p>What gets delivered</p>
+                <div class="output-grid">
+                  <span>Cleaned file</span>
+                  <span>Automation pass</span>
+                  <span>Owner handoff</span>
+                  <span>One small revision</span>
+                </div>
+              </div>
             </div>
             <figcaption>
-              Illustrative mock data. Fixed-scope entry sprint. Clean structure. Practical automation. Handoff included.
+              A focused operating fix for one spreadsheet process, not generic spreadsheet help.
             </figcaption>
           </figure>
         </div>
