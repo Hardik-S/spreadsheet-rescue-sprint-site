@@ -243,7 +243,7 @@ export function renderSite(content) {
           <div class="contact-panel">
             ${
               contact.operatorName && contact.location
-                ? `<p class="operator-line">${text(contact.operatorName)} · ${text(contact.location)}</p>`
+                ? `<p class="operator-line">${text(contact.operatorName)} | ${text(contact.location)}</p>`
                 : ''
             }
             <a class="contact-link" href="${attr(primaryHref)}">${text(contact.emailLabel ?? contact.email)}</a>
@@ -265,6 +265,10 @@ export function renderSite(content) {
 
 export function renderDocument(content) {
   const { meta } = content;
+  const canonicalUrl = meta.url ?? 'https://hardik-s.github.io/spreadsheet-rescue-sprint-site/';
+  const ogImageUrl = meta.ogImage.startsWith('http')
+    ? meta.ogImage
+    : new URL(meta.ogImage, canonicalUrl).toString();
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -273,9 +277,16 @@ export function renderDocument(content) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="${attr(meta.description)}" />
     <meta name="theme-color" content="#101217" />
+    <link rel="canonical" href="${attr(canonicalUrl)}" />
     <meta property="og:title" content="${attr(meta.title)}" />
     <meta property="og:description" content="${attr(meta.description)}" />
-    <meta property="og:image" content="${attr(meta.ogImage)}" />
+    <meta property="og:url" content="${attr(canonicalUrl)}" />
+    <meta property="og:image" content="${attr(ogImageUrl)}" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${attr(meta.title)}" />
+    <meta name="twitter:description" content="${attr(meta.description)}" />
+    <meta name="twitter:image" content="${attr(ogImageUrl)}" />
     <title>${text(meta.title)}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
