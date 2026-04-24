@@ -598,13 +598,14 @@ section[id] {
   margin: 80px auto;
 }
 
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 520ms ease, transform 520ms ease;
 }
 
-.reveal.visible {
+.reveal,
+.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }

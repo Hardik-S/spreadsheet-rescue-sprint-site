@@ -279,6 +279,7 @@ export function renderDocument(content) {
     <title>${text(meta.title)}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script>document.documentElement.classList.add('js');</script>
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap"
       rel="stylesheet"
