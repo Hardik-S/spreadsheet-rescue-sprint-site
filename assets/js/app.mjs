@@ -1,9 +1,12 @@
 const app = document.querySelector('#app');
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const prefersReducedMotion =
+  typeof window.matchMedia === 'function'
+    ? window.matchMedia('(prefers-reduced-motion: reduce)')
+    : { matches: true };
 const revealElements = document.querySelectorAll('.reveal');
 
-if (prefersReducedMotion.matches) {
+if (prefersReducedMotion.matches || typeof IntersectionObserver !== 'function') {
   revealElements.forEach((element) => element.classList.add('visible'));
 } else {
   const observer = new IntersectionObserver(
